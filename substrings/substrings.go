@@ -1,7 +1,5 @@
 package substrings
 
-import "strings"
-
 // FindIndices returns a slice of 1-based indices where the subtext is found in textToSearch
 // Matching is case-insensitive, returns nil if no matches are found
 // Matching algorithm runs in O(n*m) time, where n is the length of textToSearch and m is the length of subtext
@@ -20,18 +18,15 @@ func FindIndices(textToSearch, subtext string) []int {
 		return nil
 	}
 	var indices []int // no idea how many indices we'll need
-	// lowercase both textToSearch and subtext. This is already optimised for ASCII
-	textToSearch = strings.ToLower(textToSearch)
-	subtext = strings.ToLower(subtext)
 
 	subTextLen := len(subtext)
 
 	// we only need to check up to the last possible index where the subtext could be found
 	for i := 0; i < len(textToSearch)-subTextLen+1; i++ {
 		// check if the 1st character of the subtext matches the current character
-		if textToSearch[i] == subtext[0] { // note that we are comparing bytes and not runes, hence ASCII only
+		if toLowerASCII(textToSearch[i]) == toLowerASCII(subtext[0]) { // note that we are comparing bytes and not runes, hence ASCII only
 			for j := 0; j < subTextLen; j++ {
-				if textToSearch[i+j] != subtext[j] {
+				if toLowerASCII(textToSearch[i+j]) != toLowerASCII(subtext[j]) {
 					// if the characters don't match, stop checking
 					break
 				}
@@ -44,4 +39,11 @@ func FindIndices(textToSearch, subtext string) []int {
 		}
 	}
 	return indices
+}
+
+func toLowerASCII(char byte) byte {
+	if char >= 'A' && char <= 'Z' {
+		return char + 32
+	}
+	return char
 }
