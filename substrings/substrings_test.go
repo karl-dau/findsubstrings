@@ -103,6 +103,14 @@ func TestFindIndices(t *testing.T) {
 			},
 			want: []int{9},
 		},
+		{
+			name: "subtext found - !",
+			args: args{
+				textToSearch: "Peter told me that peter the pickle piper piped a pitted pickle before he petered out. Phew!",
+				subtext:      "!",
+			},
+			want: []int{92},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
