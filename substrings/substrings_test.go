@@ -120,3 +120,64 @@ func TestFindIndices(t *testing.T) {
 		})
 	}
 }
+
+func Test_toLowerASCII(t *testing.T) {
+	type args struct {
+		char byte
+	}
+	tests := []struct {
+		name string
+		args args
+		want byte
+	}{
+		{
+			name: "A",
+			args: args{
+				char: 'A',
+			},
+			want: 'a',
+		},
+		{
+			name: "Z",
+			args: args{
+				char: 'Z',
+			},
+			want: 'z',
+		},
+		{
+			name: "a",
+			args: args{
+				char: 'a',
+			},
+			want: 'a',
+		},
+		{
+			name: "z",
+			args: args{
+				char: 'z',
+			},
+			want: 'z',
+		},
+		{
+			name: "1",
+			args: args{
+				char: '1',
+			},
+			want: '1',
+		},
+		{
+			name: "!",
+			args: args{
+				char: '!',
+			},
+			want: '!',
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := toLowerASCII(tt.args.char); got != tt.want {
+				t.Errorf("toLowerASCII() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
