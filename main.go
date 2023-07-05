@@ -22,7 +22,6 @@ func main() {
 
 	indices := substrings.FindIndices(textToSearch, subtext)
 	if indices == nil {
-		fmt.Println("no matches found")
 		// no matches found, don't print anything
 		return
 	}
