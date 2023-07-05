@@ -87,6 +87,22 @@ func TestFindIndices(t *testing.T) {
 			},
 			want: []int{30, 37, 43, 51, 58},
 		},
+		{
+			name: "subtext found - overlapping",
+			args: args{
+				textToSearch: "abababab",
+				subtext:      "aba",
+			},
+			want: []int{1, 3, 5},
+		},
+		{
+			name: "subtext found - 9 digit",
+			args: args{
+				textToSearch: "123456789",
+				subtext:      "9",
+			},
+			want: []int{9},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
