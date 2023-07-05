@@ -41,6 +41,7 @@ func FindIndices(textToSearch, subtext string) []int {
 	return indices
 }
 
+// toLowerASCII converts a byte to lowercase ASCII
 func toLowerASCII(char byte) byte {
 	if char >= 'A' && char <= 'Z' {
 		return char + 32
