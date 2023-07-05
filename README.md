@@ -8,6 +8,8 @@ Matching algorithms runs in O(n*m) time, where n is the length of the string and
 
 Prints no output if no matches are found.
 
+Note: Only works for ASCII.
+
 ## Usage help
 
 ```
