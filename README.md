@@ -6,6 +6,8 @@ Simple Go program to find all indices (1-based) of a substring in a string.
 
 Matching algorithms runs in O(n*m) time, where n is the length of the string and m is the length of the substring.
 
+Prints no output if no matches are found.
+
 ## Usage help
 
 ```
